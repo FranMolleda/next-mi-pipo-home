@@ -21,7 +21,7 @@ function Articulo({ articulo }) {
 }
 
 export async function getStaticPaths() {
-  const url = `${process.env.GET_PRODUCTS}`;
+  const url = `${process.env.API_URL}/products`;
   const response = await fetch(url);
   const articulos = await response.json();
 
@@ -37,7 +37,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params: { canonical_uri } }) {
-  const url = `${process.env.GET_PRODUCTS}/?canonical_uri=${canonical_uri}`;
+  const url = `${process.env.API_URL}/products/?canonical_uri=${canonical_uri}`;
   const response = await fetch(url);
   const articulo = await response.json();
   return {

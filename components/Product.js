@@ -3,7 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 function Product({ product }) {
-  const url = `${process.env.NEXT_PUBLIC_PRODUCT_IMAGE_URL}${product.images[0].src}`;
+  const url = `${process.env.NEXT_PUBLIC_BASE_URL}${product.images[0].src}`;
+  console.log(url)
   const { id, canonical_uri } = product;
   return (
     <>
