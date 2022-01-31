@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 import Layout from "../../components/Layout";
 
 function Articulo({ articulo }) {
-  console.log(articulo);
   const router = useRouter();
 
   const urlQuery = router.query;
@@ -29,7 +28,7 @@ export async function getStaticPaths() {
     params: { canonical_uri: articulo.canonical_uri },
   }));
 
-  console.log(paths);
+ 
   return {
     paths,
     fallback: false,
