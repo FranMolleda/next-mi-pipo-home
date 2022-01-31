@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 import Layout from "../../components/Layout";
 
 function Articulo({ articulo }) {
-  console.log(articulo);
   const router = useRouter();
 
   const urlQuery = router.query;
@@ -21,7 +20,7 @@ function Articulo({ articulo }) {
 }
 
 export async function getStaticPaths() {
-  const url = `${process.env.GET_PRODUCTS}`;
+  const url = `${process.env.API_URL}/products`;
   const response = await fetch(url);
   const articulos = await response.json();
 
@@ -29,7 +28,7 @@ export async function getStaticPaths() {
     params: { canonical_uri: articulo.canonical_uri },
   }));
 
-  console.log(paths);
+ 
   return {
     paths,
     fallback: false,
@@ -37,7 +36,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params: { canonical_uri } }) {
-  const url = `${process.env.GET_PRODUCTS}/?canonical_uri=${canonical_uri}`;
+  const url = `${process.env.API_URL}/products/?canonical_uri=${canonical_uri}`;
   const response = await fetch(url);
   const articulo = await response.json();
   return {

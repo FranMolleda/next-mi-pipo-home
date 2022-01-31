@@ -23,7 +23,7 @@ const Productos = ({ products }) => {
 };
 
 export async function getServerSideProps() {
-  const response = await axios.get(process.env.GET_PRODUCTS);
+  const response = await axios.get(`${process.env.API_URL}/products`);
   const products = response.data.data.products;
 
   return {
